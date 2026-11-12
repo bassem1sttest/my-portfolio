@@ -1,0 +1,1130 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" class="dark scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>باسم المسلماني | Bassem Elmoslmany - Full-Stack & Backend Developer</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#f0fdf4',
+                            500: '#10b981',
+                            600: '#059669',
+                            700: '#047857',
+                        },
+                        accent: {
+                            500: '#6366f1',
+                            600: '#4f46e5',
+                        }
+                    },
+                    fontFamily: {
+                        cairo: ['Cairo', 'sans-serif'],
+                        inter: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts: Cairo & Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        body {
+            font-family: 'Cairo', 'Inter', sans-serif;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        /* Glassmorphism Classes */
+        .glass {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .dark .glass {
+            background: rgba(15, 23, 42, 0.75);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(229, 231, 235, 0.5);
+        }
+
+        .dark .glass-card {
+            background: rgba(30, 41, 59, 0.6);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        /* Gradient Animation Glow */
+        .glow-effect {
+            position: relative;
+        }
+
+        .glow-effect::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, #10b981, #6366f1, #ec4899);
+            border-radius: inherit;
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+            filter: blur(8px);
+        }
+
+        .glow-effect:hover::before {
+            opacity: 0.7;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #0f172a;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #334155;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #10b981;
+        }
+
+        /* Direction-aware layout and timeline alignment */
+        html[dir="rtl"] body { text-align: right; }
+        html[dir="ltr"] body { text-align: left; }
+        .timeline { margin-inline-start: 1rem; padding-inline-start: 1.5rem; }
+        .timeline-marker { inset-inline-start: -2.05rem; }
+        html[dir="ltr"] .space-x-reverse > :not([hidden]) ~ :not([hidden]) { --tw-space-x-reverse: 0; }
+        html[dir="ltr"] #hero .md\\:text-right { text-align: left; }
+        input, textarea { text-align: start; }
+    </style>
+</head>
+
+<body
+    class="bg-slate-50 text-slate-800 dark:bg-slate-950 dark:text-slate-100 min-h-screen selection:bg-brand-500 selection:text-white">
+
+    <!-- Navbar Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 glass transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Logo / Name -->
+                <a href="#hero" class="flex items-center gap-3 font-bold text-2xl tracking-wide group">
+                    <span
+                        class="w-11 h-11 rounded-xl bg-gradient-to-tr from-accent-600 via-accent-500 to-brand-500 text-white flex items-center justify-center font-black shadow-lg shadow-indigo-500/20 group-hover:scale-105 transition-transform duration-300 text-lg">
+                        BE
+                    </span>
+                    <div class="flex flex-col">
+                        <span
+                            class="bg-gradient-to-r from-slate-900 via-indigo-600 to-brand-500 dark:from-white dark:via-indigo-400 dark:to-brand-400 bg-clip-text text-transparent text-lg sm:text-xl font-extrabold leading-tight"
+                            id="nav-logo-text">
+                            باسم المسلماني
+                        </span>
+                        <span class="text-xs text-indigo-500 dark:text-indigo-400 font-semibold"
+                            id="nav-role-sub">Full-Stack & Backend Developer</span>
+                    </div>
+                </a>
+
+                <!-- Desktop Nav Links -->
+                <div class="hidden md:flex items-center space-x-1 space-x-reverse font-semibold text-sm">
+                    <a href="#about"
+                        class="px-3.5 py-2 rounded-lg hover:text-brand-500 dark:hover:text-brand-400 transition-colors"
+                        id="nav-about">عني والمنظور الهندسي</a>
+                    <a href="#skills"
+                        class="px-3.5 py-2 rounded-lg hover:text-brand-500 dark:hover:text-brand-400 transition-colors"
+                        id="nav-skills">المهارات</a>
+                    <a href="#projects"
+                        class="px-3.5 py-2 rounded-lg hover:text-brand-500 dark:hover:text-brand-400 transition-colors"
+                        id="nav-projects">المشاريع</a>
+                    <a href="#services"
+                        class="px-3.5 py-2 rounded-lg hover:text-brand-500 dark:hover:text-brand-400 transition-colors"
+                        id="nav-services">الخدمات والمسيرة</a>
+                    <a href="#certificates"
+                        class="px-3.5 py-2 rounded-lg hover:text-brand-500 dark:hover:text-brand-400 transition-colors"
+                        id="nav-certificates">الشهادات</a>
+                    <a href="#contact"
+                        class="px-3.5 py-2 rounded-lg hover:text-brand-500 dark:hover:text-brand-400 transition-colors"
+                        id="nav-contact">تواصل معي</a>
+                </div>
+
+                <!-- Utilities (Lang & Theme Toggle) -->
+                <div class="hidden md:flex items-center gap-3">
+                    <!-- Language Switcher -->
+                    <button id="lang-toggle" onclick="toggleLanguage()"
+                        class="px-3.5 py-1.5 rounded-lg border border-slate-300 dark:border-slate-700 text-xs font-bold hover:bg-slate-200 dark:hover:bg-slate-800 transition-all flex items-center gap-1.5 cursor-pointer">
+                        <i class="fa-solid fa-globe text-indigo-500"></i>
+                        <span id="lang-btn-text">EN</span>
+                    </button>
+
+                    <!-- Dark Mode Toggle -->
+                    <button id="theme-toggle" onclick="toggleTheme()"
+                        class="w-10 h-10 rounded-lg flex items-center justify-center border border-slate-300 dark:border-slate-700 hover:bg-slate-200 dark:hover:bg-slate-800 text-amber-500 dark:text-indigo-400 transition-all cursor-pointer">
+                        <i class="fa-solid fa-moon dark:hidden text-lg"></i>
+                        <i class="fa-solid fa-sun hidden dark:block text-lg"></i>
+                    </button>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden flex items-center gap-2">
+                    <button onclick="toggleTheme()"
+                        class="w-9 h-9 rounded-lg flex items-center justify-center border border-slate-300 dark:border-slate-700 text-amber-500 dark:text-indigo-400">
+                        <i class="fa-solid fa-moon dark:hidden"></i>
+                        <i class="fa-solid fa-sun hidden dark:block"></i>
+                    </button>
+                    <button id="lang-toggle-mobile" onclick="toggleLanguage()"
+                        class="px-2.5 py-1 rounded-lg border border-slate-300 dark:border-slate-700 text-xs font-bold">
+                        EN
+                    </button>
+                    <button onclick="toggleMobileMenu()"
+                        class="p-2 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 focus:outline-none">
+                        <i class="fa-solid fa-bars text-xl" id="menu-icon"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobile-menu"
+            class="hidden md:hidden glass border-t border-slate-200 dark:border-slate-800 px-4 pt-2 pb-6 space-y-3">
+            <a href="#about" onclick="toggleMobileMenu()"
+                class="block py-2 text-base font-semibold hover:text-brand-500" id="m-nav-about">عني والمنظور
+                الهندسي</a>
+            <a href="#skills" onclick="toggleMobileMenu()"
+                class="block py-2 text-base font-semibold hover:text-brand-500" id="m-nav-skills">المهارات</a>
+            <a href="#projects" onclick="toggleMobileMenu()"
+                class="block py-2 text-base font-semibold hover:text-brand-500" id="m-nav-projects">المشاريع</a>
+            <a href="#services" onclick="toggleMobileMenu()"
+                class="block py-2 text-base font-semibold hover:text-brand-500" id="m-nav-services">الخدمات والمسيرة</a>
+            <a href="#certificates" onclick="toggleMobileMenu()"
+                class="block py-2 text-base font-semibold hover:text-brand-500" id="m-nav-certificates">الشهادات</a>
+            <a href="#contact" onclick="toggleMobileMenu()"
+                class="block py-2 text-base font-semibold hover:text-brand-500" id="m-nav-contact">تواصل معي</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="hero" class="min-h-screen flex items-center justify-center pt-28 pb-12 relative overflow-hidden">
+        <!-- Background Decorative Orbs -->
+        <div class="absolute top-1/4 -right-20 w-96 h-96 bg-indigo-500/15 rounded-full blur-3xl pointer-events-none">
+        </div>
+        <div class="absolute bottom-1/4 -left-20 w-96 h-96 bg-brand-500/15 rounded-full blur-3xl pointer-events-none">
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+
+                <!-- Left Content -->
+                <div class="space-y-6 text-center md:text-right">
+                    <div
+                        class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full glass border border-indigo-500/30 text-indigo-600 dark:text-indigo-300 text-xs sm:text-sm font-semibold">
+                        <i class="fa-solid fa-building-user text-indigo-500"></i>
+                        <span id="hero-badge">مهندس مدني سابقاً 🏗️ ← مطور ويب 💻</span>
+                    </div>
+
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight tracking-tight">
+                        <span id="hero-greeting">أهلاً بك، أنا</span> <br>
+                        <span
+                            class="bg-gradient-to-r from-indigo-500 via-purple-400 to-brand-500 bg-clip-text text-transparent"
+                            id="hero-name">باسم المسلماني</span>
+                    </h1>
+
+                    <!-- Dynamic Typing Text Container -->
+                    <div
+                        class="text-lg sm:text-2xl font-bold text-slate-600 dark:text-slate-300 h-12 flex items-center justify-center md:justify-start gap-2">
+                        <span id="typing-prefix">خبير في</span>
+                        <span id="typing-text"
+                            class="text-indigo-600 dark:text-indigo-400 underline decoration-brand-500 decoration-wavy underline-offset-4"></span>
+                        <span class="animate-pulse">|</span>
+                    </div>
+
+                    <p class="text-slate-600 dark:text-slate-400 text-base sm:text-lg leading-relaxed max-w-xl mx-auto md:mx-0"
+                        id="hero-desc">
+                        خريج هندسة مدنية (2014) انتقلت بشغف إلى عالم البرمجة وتطوير المواقع (يونيو 2025). أجمع بين
+                        التفكير الهندسي التخطيطي ودقة بناء الأنظمة البرمجية باستخدام Laravel و React و WordPress.
+                    </p>
+
+                    <!-- CTA Buttons -->
+                    <div class="flex flex-wrap items-center justify-center md:justify-start gap-4 pt-2">
+                        <a href="#projects"
+                            class="px-7 py-3.5 rounded-xl bg-gradient-to-r from-indigo-600 to-violet-600 hover:from-indigo-500 hover:to-violet-500 text-white font-bold shadow-lg shadow-indigo-500/25 transition-all duration-300 hover:scale-105 flex items-center gap-2"
+                            id="btn-projects">
+                            <i class="fa-solid fa-code"></i>
+                            <span>استعرض مشاريعي</span>
+                        </a>
+                        <a href="https://github.com/bassem1sttest" target="_blank" rel="noreferrer"
+                            class="px-7 py-3.5 rounded-xl glass hover:bg-slate-200 dark:hover:bg-slate-800 font-bold border border-slate-300 dark:border-slate-700 transition-all duration-300 hover:scale-105 flex items-center gap-2"
+                            id="btn-github">
+                            <i class="fa-brands fa-github text-lg"></i>
+                            <span>حساب GitHub</span>
+                        </a>
+                    </div>
+
+                    <!-- Social Icons -->
+                    <div class="flex items-center justify-center md:justify-start gap-4 pt-4">
+                        <a href="https://github.com/bassem1sttest" target="_blank" rel="noreferrer"
+                            class="w-10 h-10 rounded-lg glass flex items-center justify-center text-slate-600 dark:text-slate-300 hover:text-indigo-500 dark:hover:text-indigo-400 hover:border-indigo-500 transition-all duration-300">
+                            <i class="fa-brands fa-github text-xl"></i>
+                        </a>
+                        <a href="mailto:bassem.1sttest@gmail.com"
+                            class="w-10 h-10 rounded-lg glass flex items-center justify-center text-slate-600 dark:text-slate-300 hover:text-indigo-500 dark:hover:text-indigo-400 hover:border-indigo-500 transition-all duration-300">
+                            <i class="fa-solid fa-envelope text-xl"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/in/bassem-elmoslmany/" target="_blank" rel="noreferrer"
+                            class="w-10 h-10 rounded-lg glass flex items-center justify-center text-slate-600 dark:text-slate-300 hover:text-indigo-500 dark:hover:text-indigo-400 hover:border-indigo-500 transition-all duration-300">
+                            <i class="fa-brands fa-linkedin text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Right Visual Element / Avatar & Cards -->
+                <div class="flex justify-center relative">
+                    <div
+                        class="w-72 h-72 sm:w-80 sm:h-80 lg:w-96 lg:h-96 rounded-3xl bg-gradient-to-tr from-indigo-500/20 to-brand-500/20 p-4 border border-white/20 dark:border-white/10 relative glow-effect shadow-2xl">
+                        <img src="images/profile-pic.jfif" alt="Bassem Elmoslmany"
+                            class="w-full h-full object-cover rounded-2xl shadow-inner"
+                            onerror="this.src='https://placehold.co/400x400/4f46e5/ffffff?text=Bassem+E.'">
+
+                        <!-- Floating Badges -->
+                        <div
+                            class="absolute -bottom-6 -right-6 glass p-4 rounded-2xl flex items-center gap-3 shadow-lg border border-white/20">
+                            <div
+                                class="w-12 h-12 rounded-xl bg-indigo-500/20 text-indigo-500 flex items-center justify-center font-bold text-xl">
+                                <i class="fa-solid fa-compass-drafting"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-sm" id="badge1-title">2014 - 2025</h4>
+                                <p class="text-xs text-slate-500 dark:text-slate-400" id="badge1-sub">خبرة في الهندسة
+                                    والتخطيط</p>
+                            </div>
+                        </div>
+
+                        <div
+                            class="absolute -top-6 -left-6 glass p-4 rounded-2xl flex items-center gap-3 shadow-lg border border-white/20">
+                            <div
+                                class="w-12 h-12 rounded-xl bg-brand-500/20 text-brand-500 flex items-center justify-center font-bold text-xl">
+                                <i class="fa-solid fa-server"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-sm" id="badge2-title">Laravel & React</h4>
+                                <p class="text-xs text-slate-500 dark:text-slate-400" id="badge2-sub">أنظمة خلفية
+                                    متكاملة</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- About Me & Mindset Section -->
+    <section id="about" class="py-20 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-3xl sm:text-4xl font-extrabold mb-4" id="about-heading">عني والتحول الوظيفي</h2>
+                <div class="w-20 h-1.5 bg-gradient-to-r from-indigo-500 to-brand-500 mx-auto rounded-full mb-4"></div>
+                <p class="text-slate-600 dark:text-slate-400 text-base sm:text-lg" id="about-sub">من التخطيط الإنشائي
+                    إلى بناء المعمارية البرمجية المنظمة.</p>
+            </div>
+
+            <div class="grid lg:grid-cols-12 gap-8 mb-16 items-stretch">
+                <!-- Text Description -->
+                <div
+                    class="lg:col-span-7 glass-card p-8 rounded-3xl border border-slate-200 dark:border-slate-800 flex flex-col justify-center space-y-4">
+                    <h3 class="text-2xl font-bold text-indigo-600 dark:text-indigo-400" id="about-title-internal">رؤيتي
+                        في دمج الهندسة المدنية بالبرمجة</h3>
+                    <p class="text-slate-600 dark:text-slate-300 leading-relaxed text-sm sm:text-base" id="about-p1">
+                        تخرجت من كلية الهندسة المدنية عام 2014 واكتسبت سنوات من الخبرة الإدارية والهيكلية. وفي يونيو
+                        2025، اتخذت خطوة استراتيجية نحو شغفي البرمجي وتطوير الويب المتكامل.
+                    </p>
+                    <p class="text-slate-600 dark:text-slate-300 leading-relaxed text-sm sm:text-base" id="about-p2">
+                        أنظر إلى كتابة الكود بنفس المنظور الهندسي: تصميم بنية تحتية قوية (Backend Architecture)، توفير
+                        أمان عالٍ وموثوقية، وبناء واجهات سلسة ومتجاوبة تخدم أهداف العمل بمرونة وقابلية للتوسع.
+                    </p>
+                </div>
+
+                <!-- Engineering Mindset Cards -->
+                <div
+                    class="lg:col-span-5 glass-card p-8 rounded-3xl border border-slate-200 dark:border-slate-800 space-y-6">
+                    <h3
+                        class="text-xl font-bold flex items-center gap-3 border-b border-slate-200 dark:border-slate-800 pb-4">
+                        <i class="fa-solid fa-terminal text-indigo-500"></i>
+                        <span id="mindset-title">المنظور الهندسي في كتابة الكود</span>
+                    </h3>
+
+                    <div class="space-y-4">
+                        <div class="flex items-start gap-3">
+                            <div
+                                class="w-8 h-8 rounded-lg bg-indigo-500/10 text-indigo-500 flex items-center justify-center font-bold shrink-0 mt-0.5">
+                                <i class="fa-solid fa-diagram-project text-sm"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-sm" id="mind1-t">التحليل الإنشائي</h4>
+                                <p class="text-xs text-slate-500 dark:text-slate-400" id="mind1-d">تخطيط معمارية قواعد
+                                    البيانات الـ DB Schema ونقاط الـ APIs بحسابات دقيقة.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-3">
+                            <div
+                                class="w-8 h-8 rounded-lg bg-brand-500/10 text-brand-500 flex items-center justify-center font-bold shrink-0 mt-0.5">
+                                <i class="fa-solid fa-shield-halved text-sm"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-sm" id="mind2-t">معايير السلامة</h4>
+                                <p class="text-xs text-slate-500 dark:text-slate-400" id="mind2-d">تأمين الكود، حماية
+                                    البيانات، وإجراء الاختبارات الأوتوماتيكية Automated Tests.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-3">
+                            <div
+                                class="w-8 h-8 rounded-lg bg-pink-500/10 text-pink-500 flex items-center justify-center font-bold shrink-0 mt-0.5">
+                                <i class="fa-solid fa-cubes text-sm"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-sm" id="mind3-t">تنفيذ المشاريع</h4>
+                                <p class="text-xs text-slate-500 dark:text-slate-400" id="mind3-d">كتابة كود نظيف (Clean
+                                    Code) وتصميم أنظمة قابلة للتوسع والتطوير المستقبلي.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Stats Counter Bar -->
+            <div
+                class="glass rounded-3xl p-8 border border-slate-200 dark:border-slate-800 grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+                <div>
+                    <h4 class="text-3xl sm:text-4xl font-extrabold text-indigo-500 mb-1">+11</h4>
+                    <p class="text-sm text-slate-500 dark:text-slate-400 font-semibold" id="stat1">سنوات خبرة هندسية
+                        وتحليلية</p>
+                </div>
+                <div>
+                    <h4 class="text-3xl sm:text-4xl font-extrabold text-brand-500 mb-1">+5</h4>
+                    <p class="text-sm text-slate-500 dark:text-slate-400 font-semibold" id="stat2">مشاريع رئيسية مفتوحة
+                        المصدر</p>
+                </div>
+                <div>
+                    <h4 class="text-3xl sm:text-4xl font-extrabold text-purple-500 mb-1">100%</h4>
+                    <p class="text-sm text-slate-500 dark:text-slate-400 font-semibold" id="stat3">معمارية برمجية وكود
+                        نظيف</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills & Expertise Section -->
+    <section id="skills" class="py-20 bg-slate-100/50 dark:bg-slate-900/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-3xl sm:text-4xl font-extrabold mb-4" id="skills-heading">المهارات التقنية والخبرات</h2>
+                <div class="w-20 h-1.5 bg-gradient-to-r from-indigo-500 to-brand-500 mx-auto rounded-full mb-4"></div>
+                <p class="text-slate-600 dark:text-slate-400" id="skills-sub">الأدوات والتقنيات البرمجية المسخرة لبناء
+                    حلول ويب متطورة.</p>
+            </div>
+
+            <!-- Skills Grid: rendered from bilingual data -->
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6" id="skills-grid"></div>
+        </div>
+    </section>
+
+    <!-- Portfolio / Featured Projects -->
+    <section id="projects" class="py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <h2 class="text-3xl sm:text-4xl font-extrabold mb-4" id="projects-heading">معرض المشاريع البارزة</h2>
+                <div class="w-20 h-1.5 bg-gradient-to-r from-indigo-500 to-brand-500 mx-auto rounded-full mb-4"></div>
+                <p class="text-slate-600 dark:text-slate-400" id="projects-sub">استعرض المشاريع الحقيقية والأكواد
+                    البرمجية المتاحة على GitHub.</p>
+            </div>
+
+            <!-- Category Filter Buttons -->
+            <div class="flex flex-wrap justify-center gap-3 mb-12">
+                <button onclick="filterProjects('all')"
+                    class="filter-btn active px-5 py-2 rounded-xl font-semibold text-sm bg-indigo-600 text-white transition-all shadow-md cursor-pointer"
+                    data-filter="all" id="filter-all">الكل</button>
+                <button onclick="filterProjects('backend')"
+                    class="filter-btn px-5 py-2 rounded-xl font-semibold text-sm glass hover:bg-slate-200 dark:hover:bg-slate-800 transition-all cursor-pointer"
+                    data-filter="backend" id="filter-backend">Backend & APIs</button>
+                <button onclick="filterProjects('fullstack')"
+                    class="filter-btn px-5 py-2 rounded-xl font-semibold text-sm glass hover:bg-slate-200 dark:hover:bg-slate-800 transition-all cursor-pointer"
+                    data-filter="fullstack" id="filter-fullstack">Full-Stack & Front-End</button>
+            </div>
+
+            <!-- Projects Grid: rendered from bilingual data -->
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" id="projects-grid"></div>
+        </div>
+    </section>
+
+    <!-- Experience Timeline & Services -->
+    <section id="services" class="py-20 bg-slate-100/50 dark:bg-slate-900/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-12">
+
+                <!-- Services Offered -->
+                <div>
+                    <h2 class="text-3xl font-extrabold mb-8" id="services-title">الخدمات التقنية</h2>
+
+                    <div class="space-y-6">
+                        <div
+                            class="glass-card p-6 rounded-2xl flex items-start gap-4 border border-slate-200 dark:border-slate-800">
+                            <div
+                                class="w-12 h-12 rounded-xl bg-indigo-500/10 text-indigo-500 flex items-center justify-center text-xl font-bold shrink-0">
+                                <i class="fa-solid fa-server"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-bold mb-1" id="srv1-title">تطوير الأنظمة الخلفية و REST APIs
+                                </h3>
+                                <p class="text-slate-600 dark:text-slate-400 text-sm" id="srv1-desc">بناء خلفيات سحابية
+                                    وتطبيقات خلفية متكاملة باستخدام Laravel و PHP 8+ مع توفير مصادقة آمنة وحسابات دقيقة.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div
+                            class="glass-card p-6 rounded-2xl flex items-start gap-4 border border-slate-200 dark:border-slate-800">
+                            <div
+                                class="w-12 h-12 rounded-xl bg-amber-500/10 text-amber-500 flex items-center justify-center text-xl font-bold shrink-0">
+                                <i class="fa-brands fa-wordpress font-bold"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-bold mb-1" id="srv2-title">تطوير مواقع وقوالب WordPress مخصصة
+                                </h3>
+                                <p class="text-slate-600 dark:text-slate-400 text-sm" id="srv2-desc">إنشاء قوالب
+                                    WordPress متقدمة باستخدام مكتبة Timber وقوالب Twig مع تخصيص حقول ACF Pro لسهولة
+                                    التحكم.</p>
+                            </div>
+                        </div>
+
+                        <div
+                            class="glass-card p-6 rounded-2xl flex items-start gap-4 border border-slate-200 dark:border-slate-800">
+                            <div
+                                class="w-12 h-12 rounded-xl bg-brand-500/10 text-brand-500 flex items-center justify-center text-xl font-bold shrink-0">
+                                <i class="fa-solid fa-laptop-code"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-bold mb-1" id="srv3-title">بناء واجهات متجاوبة وعصرية</h3>
+                                <p class="text-slate-600 dark:text-slate-400 text-sm" id="srv3-desc">تطوير واجهات مستخدم
+                                    سريعة الجاهزية باستخدام React وTailwind CSS تضمن أعلى مستوى تجربة مستخدم UI/UX.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Career Timeline -->
+                <div>
+                    <h2 class="text-3xl font-extrabold mb-8" id="exp-title">المسيرة المهنية والهندسية</h2>
+
+                    <div class="timeline relative border-s-2 border-slate-300 dark:border-slate-700 ms-4 space-y-8 ps-6">
+
+                        <!-- Timeline Item 1 -->
+                        <div id="timeline1" class="relative border-s-2 border-slate-300 dark:border-slate-700 ms-4 space-y-8 ps-6">
+                            <span
+                                class="timeline-marker absolute top-1.5 w-5 h-5 rounded-full bg-indigo-500 border-4 border-slate-50 dark:border-slate-950"></span>
+                            <span data-t="date" class="text-xs font-bold text-indigo-500 mx-5">يونيو 2025 → الآن</span>
+                            <h3 data-t="title" class="text-lg font-bold">Full-Stack & Backend Web Developer</h3>
+                            <p data-t="sub" class="text-xs text-slate-500 dark:text-slate-400 mb-2">تطوير حلول الويب ومشاريع مفتوحة
+                                المصدر</p>
+                            <p data-t="desc" class="text-slate-600 dark:text-slate-400 text-sm">التركيز الكامل على بناء أنظمة Laravel،
+                                تطوير قوالب وردبرس مخصصة، وبناء تطبيقات ويب كاملة مع اختبار الأمان.</p>
+                        </div>
+
+                        <!-- Timeline Item 2 -->
+                        <div id="timeline2" class="relative border-s-2 border-slate-300 dark:border-slate-700 ms-4 space-y-8 ps-6">
+                            <span
+                                class="timeline-marker absolute top-1.5 w-5 h-5 rounded-full bg-brand-500 border-4 border-slate-50 dark:border-slate-950"></span>
+                            <span data-t="date" class="text-xs font-bold text-brand-500 mx-5">2014 → 2025</span>
+                            <h3 data-t="title" class="text-lg font-bold">مهندس مدني ومدير مشاريع إنشائية</h3>
+                            <p data-t="sub" class="text-xs text-slate-500 dark:text-slate-400 mb-2">إدارة وتخطيط المشاريع الإنشائية
+                            </p>
+                            <p data-t="desc" class="text-slate-600 dark:text-slate-400 text-sm">تخرج من كلية الهندسة المدنية عام 2014،
+                                والقيام بتخطيط البنية التحتية، إدارة الفرق الإنشائية، وتحليل المخاطر قبل التحول الكامل
+                                لعالم البرمجة.</p>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Courses & Certificates Section -->
+    <section id="certificates" class="py-20 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-3xl sm:text-4xl font-extrabold mb-4" id="certs-heading">الكورسات والشهادات المعتمدة</h2>
+                <div class="w-20 h-1.5 bg-gradient-to-r from-indigo-500 to-brand-500 mx-auto rounded-full mb-4"></div>
+                <p class="text-slate-600 dark:text-slate-400" id="certs-sub">التعلم المستمر والشهادات الأكاديمية والتقنية التي صقلت مهاراتي الهندسية والبرمجية.</p>
+            </div>
+
+            <!-- Certificates Grid: rendered from bilingual data -->
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6" id="certificates-grid"></div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-slate-100/50 dark:bg-slate-900/50 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-3xl sm:text-4xl font-extrabold mb-4" id="contact-heading">لنعمل معاً</h2>
+                <div class="w-20 h-1.5 bg-gradient-to-r from-indigo-500 to-brand-500 mx-auto rounded-full mb-4"></div>
+                <p class="text-slate-600 dark:text-slate-400" id="contact-sub">هل لديك مشروع قادم، استشارة تقنية، أو
+                    فرصة عمل مناسبة؟ يسعدني التواصل بك.</p>
+            </div>
+
+            <div class="grid lg:grid-cols-3 gap-8">
+
+                <!-- Direct Info Cards -->
+                <div class="space-y-4">
+                    <div
+                        class="glass-card p-6 rounded-2xl flex items-center gap-4 border border-slate-200 dark:border-slate-800">
+                        <div
+                            class="w-12 h-12 rounded-xl bg-indigo-500/10 text-indigo-500 flex items-center justify-center text-xl font-bold">
+                            <i class="fa-solid fa-envelope"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-xs text-slate-500 dark:text-slate-400 font-semibold" id="c-email">البريد
+                                الإلكتروني</h4>
+                            <a href="mailto:bassem.1sttest@gmail.com"
+                                class="font-bold hover:text-indigo-500 transition-colors">bassem.1sttest@gmail.com</a>
+                        </div>
+                    </div>
+
+                    <div class="glass-card p-6 rounded-2xl flex items-center gap-4 border border-slate-200 dark:border-slate-800 cursor-pointer"
+                        onclick="copyGitHubLink()">
+                        <div
+                            class="w-12 h-12 rounded-xl bg-brand-500/10 text-brand-500 flex items-center justify-center text-xl font-bold">
+                            <i class="fa-brands fa-github"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-xs text-slate-500 dark:text-slate-400 font-semibold" id="c-github">حساب
+                                GitHub الرسمي</h4>
+                            <span class="font-bold text-sm hover:text-brand-500 transition-colors"
+                                dir="ltr">github.com/bassem1sttest</span>
+                        </div>
+                    </div>
+
+                    <div
+                        class="glass-card p-6 rounded-2xl flex items-center gap-4 border border-slate-200 dark:border-slate-800">
+                        <div
+                            class="w-12 h-12 rounded-xl bg-purple-500/10 text-purple-500 flex items-center justify-center text-xl font-bold">
+                            <i class="fa-solid fa-location-dot"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-xs text-slate-500 dark:text-slate-400 font-semibold" id="c-location">الموقع
+                                والعمل</h4>
+                            <p class="font-bold" id="c-city">مصر (عمل عن بُعد / Remote Work)</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Form -->
+                <div class="lg:col-span-2 glass-card p-8 rounded-3xl border border-slate-200 dark:border-slate-800">
+                    <form onsubmit="handleFormSubmit(event)" action="https://formspree.io/f/xbgoreqo" method="POST"
+                        class="space-y-6">
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-sm font-semibold mb-2" id="lbl-name">الاسم الكامل</label>
+                                <input type="text" name="name" required placeholder="أدخل اسمك هنا"
+                                    class="w-full px-4 py-3 rounded-xl glass border border-slate-300 dark:border-slate-700 focus:outline-none focus:border-indigo-500 transition-all">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-semibold mb-2" id="lbl-email">البريد الإلكتروني</label>
+                                <input type="email" required name="email" placeholder="name@example.com"
+                                    class="w-full px-4 py-3 rounded-xl glass border border-slate-300 dark:border-slate-700 focus:outline-none focus:border-indigo-500 transition-all">
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-semibold mb-2" id="lbl-subject">الموضوع</label>
+                            <input type="text" name="subject" required placeholder="كيف يمكنني مساعدتك في مشروعك؟"
+                                class="w-full px-4 py-3 rounded-xl glass border border-slate-300 dark:border-slate-700 focus:outline-none focus:border-indigo-500 transition-all">
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-semibold mb-2" id="lbl-message">الرسالة</label>
+                            <textarea name="message" rows="4" required
+                                placeholder="اكتب تفاصيل الاستفسار أو المشروع هنا..."
+                                class="w-full px-4 py-3 rounded-xl glass border border-slate-300 dark:border-slate-700 focus:outline-none focus:border-indigo-500 transition-all"></textarea>
+                        </div>
+
+                        <button type="submit"
+                            class="w-full py-4 rounded-xl bg-gradient-to-r from-indigo-600 to-violet-600 hover:from-indigo-500 hover:to-violet-500 text-white font-bold shadow-lg shadow-indigo-500/25 transition-all duration-300 hover:scale-[1.01] flex items-center justify-center gap-2 cursor-pointer">
+                            <i class="fa-solid fa-paper-plane"></i>
+                            <span id="btn-send">إرسال الرسالة</span>
+                        </button>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="border-t border-slate-200 dark:border-slate-800 py-10 glass">
+        <div
+            class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-6">
+            <p class="text-sm text-slate-500 dark:text-slate-400 font-semibold" id="footer-copy">
+                © <span id="year"></span> باسم المسلماني - جميع الحقوق محفوظة.
+            </p>
+
+            <button onclick="scrollToTop()"
+                class="w-10 h-10 rounded-xl bg-slate-200 dark:bg-slate-800 hover:bg-indigo-600 hover:text-white transition-all duration-300 flex items-center justify-center cursor-pointer">
+                <i class="fa-solid fa-arrow-up"></i>
+            </button>
+        </div>
+    </footer>
+
+    <!-- Interactive JavaScript Logic -->
+    <script>
+        // Set Current Year
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Theme Toggle Functionality
+        function toggleTheme() {
+            const html = document.documentElement;
+            if (html.classList.contains('dark')) {
+                html.classList.remove('dark');
+                localStorage.setItem('theme', 'light');
+            } else {
+                html.classList.add('dark');
+                localStorage.setItem('theme', 'dark');
+            }
+        }
+
+        // Complete bilingual content dictionary (all fixed page copy).
+        let currentLang = 'ar';
+        const translations = {
+          ar: {
+            pageTitle:"باسم المسلماني | مطور Full-Stack و Backend", navLogo:"باسم المسلماني", navRole:"Full-Stack & Backend Developer",
+            about:"عني والمنظور الهندسي", skills:"المهارات", projects:"المشاريع", services:"الخدمات والمسيرة", certificates:"الشهادات", contact:"تواصل معي",
+            badge:"مهندس مدني سابقاً 🏗️ ← مطور ويب 💻", greeting:"أهلاً بك، أنا", name:"باسم المسلماني",
+            typingPrefix:"خبير في", typingRoles:["تطوير Backend & Laravel","بناء تطبيقات Full Stack","تطوير قوالب WordPress & Twig"],
+            desc:"خريج هندسة مدنية (2014) انتقلت بشغف إلى عالم البرمجة وتطوير المواقع (يونيو 2025). أجمع بين التفكير الهندسي التخطيطي ودقة بناء الأنظمة البرمجية باستخدام Laravel و React و WordPress.",
+            btnProjects:"استعرض مشاريعي", btnGithub:"حساب GitHub", badge1Title:"2014 - 2025", badge1Sub:"خبرة في الهندسة والتخطيط",
+            badge2Title:"Laravel & React", badge2Sub:"أنظمة خلفية متكاملة", aboutHeading:"عني والتحول الوظيفي",
+            aboutSub:"من التخطيط الإنشائي إلى بناء المعمارية البرمجية المنظمة.", aboutTitleInternal:"رؤيتي في دمج الهندسة المدنية بالبرمجة",
+            aboutP1:"تخرجت من كلية الهندسة المدنية عام 2014 واكتسبت سنوات من الخبرة الإدارية والهيكلية. وفي يونيو 2025، اتخذت خطوة استراتيجية نحو شغفي البرمجي وتطوير الويب المتكامل.",
+            aboutP2:"أنظر إلى كتابة الكود بنفس المنظور الهندسي: تصميم بنية تحتية قوية (Backend Architecture)، توفير أمان عالٍ وموثوقية، وبناء واجهات سلسة ومتجاوبة تخدم أهداف العمل بمرونة وقابلية للتوسع.",
+            mindsetTitle:"المنظور الهندسي في كتابة الكود", mind1T:"التحليل الإنشائي", mind1D:"تخطيط معمارية قواعد البيانات الـ DB Schema ونقاط الـ APIs بحسابات دقيقة.",
+            mind2T:"معايير السلامة", mind2D:"تأمين الكود، حماية البيانات، وإجراء الاختبارات الأوتوماتيكية Automated Tests.",
+            mind3T:"تنفيذ المشاريع", mind3D:"كتابة كود نظيف (Clean Code) وتصميم أنظمة قابلة للتوسع والتطوير المستقبلي.",
+            stat1:"سنوات خبرة هندسية وتحليلية",stat2:"مشاريع رئيسية مفتوحة المصدر",stat3:"معمارية برمجية وكود نظيف",
+            skillsHeading:"المهارات التقنية والخبرات",skillsSub:"الأدوات والتقنيات البرمجية المسخرة لبناء حلول ويب متطورة.",
+            projectsHeading:"معرض المشاريع البارزة",projectsSub:"استعرض المشاريع الحقيقية والأكواد البرمجية المتاحة على GitHub.",
+            filterAll:"الكل",filterBackend:"Backend & APIs",filterFullstack:"Full-Stack & Front-End",
+            servicesTitle:"الخدمات التقنية",expTitle:"المسيرة المهنية والهندسية",
+            srv1Title:"تطوير الأنظمة الخلفية و REST APIs",srv1Desc:"بناء خلفيات سحابية وتطبيقات خلفية متكاملة باستخدام Laravel و PHP 8+ مع توفير مصادقة آمنة وحسابات دقيقة.",
+            srv2Title:"تطوير مواقع وقوالب WordPress مخصصة",srv2Desc:"إنشاء قوالب WordPress متقدمة باستخدام مكتبة Timber وقوالب Twig مع تخصيص حقول ACF Pro لسهولة التحكم.",
+            srv3Title:"بناء واجهات متجاوبة وعصرية",srv3Desc:"تطوير واجهات مستخدم سريعة الجاهزية باستخدام React وTailwind CSS تضمن أعلى مستوى تجربة مستخدم UI/UX.",
+            timeline1Date:"يونيو 2025 → الآن",timeline1Title:"Full-Stack & Backend Web Developer",timeline1Sub:"تطوير حلول الويب ومشاريع مفتوحة المصدر",timeline1Desc:"التركيز الكامل على بناء أنظمة Laravel، تطوير قوالب وردبرس مخصصة، وبناء تطبيقات ويب كاملة مع اختبار الأمان.",
+            timeline2Date:"2014 → 2025",timeline2Title:"مهندس مدني ومدير مشاريع إنشائية",timeline2Sub:"إدارة وتخطيط المشاريع الإنشائية",timeline2Desc:"تخرج من كلية الهندسة المدنية عام 2014، والقيام بتخطيط البنية التحتية، إدارة الفرق الإنشائية، وتحليل المخاطر قبل التحول الكامل لعالم البرمجة.",
+            certsHeading:"الكورسات والشهادات المعتمدة",certsSub:"التعلم المستمر والشهادات الأكاديمية والتقنية التي صقلت مهاراتي الهندسية والبرمجية.",
+            viewCert:"عرض الشهادة",credentialId:"رقم الاعتماد:",
+            contactHeading:"لنعمل معاً",contactSub:"هل لديك مشروع قادم، استشارة تقنية، أو فرصة عمل مناسبة؟ يسعدني التواصل بك.",
+            email:"البريد الإلكتروني",github:"حساب GitHub الرسمي",location:"الموقع والعمل",city:"مصر (عمل عن بُعد / Remote Work)",
+            lblName:"الاسم الكامل",lblEmail:"البريد الإلكتروني",lblSubject:"الموضوع",lblMessage:"الرسالة",
+            phName:"أدخل اسمك هنا",phSubject:"كيف يمكنني مساعدتك في مشروعك؟",phMessage:"اكتب تفاصيل الاستفسار أو المشروع هنا...",
+            btnSend:"إرسال الرسالة",sending:"جاري الإرسال...",footerCopy:"جميع الحقوق محفوظة.",
+            copyAlert:"تم نسخ رابط GitHub!", success:"شكراً لتواصلك! تم إرسال رسالتك بنجاح.", error:"حدث خطأ ما، يرجى المحاولة مرة أخرى.", networkError:"حدث خطأ في الاتصال بالإنترنت.",
+            repo:"رابط المستودع Repository"
+          },
+          en: {
+            pageTitle:"Bassem Elmoslmany | Full-Stack & Backend Developer",navLogo:"Bassem Elmoslmany",navRole:"Full-Stack & Backend Developer",about:"About & Engineering Mindset",skills:"Skills",projects:"Projects",services:"Services & Career",certificates:"Certificates",contact:"Contact",
+            badge:"Former Civil Engineer 🏗️ → Web Developer 💻",greeting:"Hello, I'm",name:"Bassem Elmoslmany",typingPrefix:"Specialized in",
+            typingRoles:["Backend & Laravel Development","Full Stack Web Systems","Custom WordPress & Twig Themes"],
+            desc:"Civil Engineering graduate (2014) transitioned into full-stack web development (June 2025). Combining structural analytical thinking with modern software craftsmanship using Laravel, React, and WordPress.",
+            btnProjects:"View Featured Projects",btnGithub:"GitHub Profile",badge1Title:"2014 - 2025",badge1Sub:"Engineering & Planning Experience",badge2Title:"Laravel & React",badge2Sub:"Robust Backend Systems",
+            aboutHeading:"About & Career Transition",aboutSub:"From Structural Engineering to Software Architecture.",aboutTitleInternal:"Blending Civil Engineering with Code",
+            aboutP1:"Graduated with a degree in Civil Engineering in 2014, gaining years of management and structural experience. In June 2025, I made a strategic move toward my passion for software and full-stack web development.",
+            aboutP2:"I approach coding with an engineering mindset: designing strong backend architecture, ensuring security and reliability, and building smooth, responsive interfaces that support business goals and scale.",
+            mindsetTitle:"Engineering Mindset in Code",mind1T:"Structural Analysis",mind1D:"Careful planning of database schemas and API endpoints.",
+            mind2T:"Safety Standards",mind2D:"Code security, data protection, and automated testing.",mind3T:"Project Execution",mind3D:"Writing clean code and designing scalable systems for future growth.",
+            stat1:"Years of Engineering & Analytical Experience",stat2:"Major Open-Source Projects",stat3:"Clean Software Architecture & Code",
+            skillsHeading:"Technical Skills & Expertise",skillsSub:"Technologies and tools used to build advanced web solutions.",
+            projectsHeading:"Featured Projects",projectsSub:"Explore real projects and source code available on GitHub.",
+            filterAll:"All",filterBackend:"Backend & APIs",filterFullstack:"Full-Stack & Front-End",
+            servicesTitle:"Technical Services",expTitle:"Professional & Engineering Journey",
+            srv1Title:"Backend Systems & REST APIs Development",srv1Desc:"Building complete backend applications with Laravel and PHP 8+, including secure authentication and accurate business logic.",
+            srv2Title:"Custom WordPress Websites & Themes",srv2Desc:"Creating advanced WordPress themes with Timber and Twig templates, plus customizable ACF Pro fields.",
+            srv3Title:"Modern Responsive Interfaces",srv3Desc:"Building fast, responsive user interfaces with React and Tailwind CSS for a strong UI/UX experience.",
+            timeline1Date:"June 2025 → Present",timeline1Title:"Full-Stack & Backend Web Developer",timeline1Sub:"Web solutions and open-source projects",timeline1Desc:"Focused on building Laravel systems, custom WordPress themes, and complete web applications with security testing.",
+            timeline2Date:"2014 → 2025",timeline2Title:"Civil Engineer & Construction Project Manager",timeline2Sub:"Construction project planning and management",timeline2Desc:"Graduated in Civil Engineering in 2014; planned infrastructure, managed construction teams, and analyzed risks before transitioning fully into software development.",
+            certsHeading:"Courses & Certifications",certsSub:"Continuous learning and verified credentials that shaped my software and engineering expertise.",
+            viewCert:"View Certificate",credentialId:"Credential ID:",
+            contactHeading:"Let's Work Together",contactSub:"Have an upcoming project, technical inquiry, or job opportunity? I'd be glad to hear from you.",
+            email:"Email Address",github:"Official GitHub Profile",location:"Location & Availability",city:"Egypt (Remote Work)",
+            lblName:"Full Name",lblEmail:"Email Address",lblSubject:"Subject",lblMessage:"Message",
+            phName:"Enter your name",phSubject:"How can I help with your project?",phMessage:"Write your inquiry or project details here...",
+            btnSend:"Send Message",sending:"Sending...",footerCopy:"All rights reserved.",
+            copyAlert:"GitHub link copied to clipboard!",success:"Thank you! Your message has been sent successfully.",error:"Something went wrong. Please try again.",networkError:"A network error occurred.",
+            repo:"Repository link"
+          }
+        };
+
+        const skillGroups = [
+          {icon:"fa-server",tone:"indigo",title:{ar:"هندسة الأنظمة الخلفية",en:"Backend Architecture"},items:["PHP 8+","Laravel Framework","RESTful APIs","Sanctum Auth","MVC Pattern"]},
+          {icon:"fa-database",tone:"brand",title:{ar:"قواعد البيانات والتخزين",en:"Database & Storage"},items:["MySQL","Database Schema Design","Eloquent ORM","Migrations & Seeding"]},
+          {icon:"fa-code",tone:"purple",title:{ar:"تطوير الواجهات الأمامية",en:"Frontend Development"},items:["JavaScript (ES6+)","React.js","Tailwind CSS","HTML5 / CSS3","Vite"]},
+          {icon:"fa-wordpress",brand:true,tone:"amber",title:{ar:"أنظمة إدارة المحتوى والحلول المخصصة",en:"CMS & Custom Solutions"},items:["WordPress Development","Timber Library","Twig Templates","ACF Pro"]},
+          {icon:"fa-toolbox",tone:"pink",title:{ar:"الأدوات وسير العمل",en:"Tools & Workflows"},items:["Git & GitHub","Postman API Testing","Git Bash / Terminal","OBS Studio"],wide:true}
+        ];
+
+        const projectsData = [
+          {category:"backend",type:"Backend System",title:{ar:"نظام إدارة الحضور والشيفتات (Laravel)",en:"Attendance & Shift Management System (Laravel)"},desc:{ar:"نظام خلفي متكامل ومؤمن لإدارة جدول عمل الموظفين وتسجيل الانصراف والحضور أوتوماتيكياً وحساب الساعات بدقة.",en:"A secure, complete backend system for employee schedules, automated check-in/check-out tracking, and accurate work-hour calculations."},image:"https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=800&auto=format&fit=crop",alt:"Laravel Attendance System",repo:"https://github.com/bassem1sttest/laravel-attendance-system",site_link:"https://github.com/bassem1sttest/laravel-attendance-system",tags:["Laravel","PHP","MySQL","Sanctum"]},
+
+          {category:"fullstack",type:"E-Commerce UI",title:{ar:"تصميم وتطوير منصة دكان زمان ",en:"Dokan Zaman Platform UI Design and Development"},desc:{ar:"تطوير وتحديث واجهات وتصميم منصة دكان زمان الإلكترونية لتقديم تجربة تسوق سلسة وعصرية مع تنظيف الهيكل البرمجي.",en:"Designed and developed the Dokan Zaman e-commerce interface and design to deliver a smooth, modern shopping experience with a cleaner code structure."},image:"images/dokan-zaman.png",alt:"Dokan Design Updated",repo:"https://github.com/bassem1sttest/dokan-design-updated",site_link:"https://dokan-zaman.com/",tags:["HTML/CSS","JavaScript","Tailwind CSS"]},
+
+          {category:"fullstack",type:"AI Platform",title:{ar:"منصة AdVaultAI",en:"AdVaultAI Platform"},desc:{ar:"تطوير وتحديث واجهة مستخدم متجاوبة ومنظمة لمنصة إعلانية تعتمد على الذكاء الاصطناعي وتوزيع العناقيد Data Clusters.",en:"Developed a responsive, organized interface for an AI-powered advertising platform using data-cluster distribution."},image:"images/advault-ai.jpg",alt:"AdVaultAI",repo:"https://github.com/bassem1sttest/AdvaultAI-16clusters",site_link:"https://staging.advaultai.com/",tags:["React","Tailwind CSS","REST APIs"]},
+
+          {category:"fullstack",type:"Property Web Platform",title:{ar:"خدمات العناية بالعقارات الخارجية",en:"Exterior Property Care Services"},desc:{ar:"منصة ويب متكاملة مخصصة لعرض وتقديم خدمات الصيانة والعناية بالعقارات والمنشآت من الخارج بتصاميم متجاوبة.",en:"A responsive web platform presenting exterior property and facility maintenance and care services."},image:"images/mnj-property-care.jfif",alt:"Exterior Property Care",repo:"https://github.com/bassem1sttest/Exterior-property-care",site_link:"https://mnnj.inetwork-hub.store/",tags:["HTML/CSS","JavaScript","Tailwind CSS"]},
+          
+          {category:"fullstack",type:"Service Demos",title:{ar:"عروض خدمات أبواب الجراجات",en:"Garage Door Service Demos"},desc:{ar:"تطوير صفحة عروض وتفاعلات سريعة لخدمات طوارئ وصيانة أبواب الجراجات باحترافية عالية وسرعة تصفح فائقة.",en:"Built a fast, interactive service landing page for garage-door emergency and maintenance services."},image:"images/garage-door-asap.jpg",alt:"Garage Door ASAP",repo:"https://github.com/bassem1sttest/garage-door-asap-service-demos",site_link:"https://github.com/bassem1sttest/garage-door-asap-service-demos",tags:["JavaScript","Tailwind CSS","UI/UX"]}
+        ];
+
+        // بيانات الكورسات والشهادات (يمكنك تعديلها أو إضافة شهاداتك الحقيقية بسهولة)
+        const certificatesData = [
+          {
+            icon: "fa-laravel",
+            brand: true,
+            tone: "indigo",
+            title: { ar: "تطوير تطبيقات الويب باستخدام Laravel و PHP", en: "Full-Stack Web Development with PHP & Laravel" },
+            issuer: { ar: "أكاديمية البرمجة / Udemy", en: "Coding Academy / Udemy" },
+            date: { ar: "2025", en: "2025" },
+            credentialId: "UC-LARAVEL-2025",
+            link: "#" // ضع رابط الشهادة أو ملف PDF هنا
+          },
+          {
+            icon: "fa-react",
+            brand: true,
+            tone: "brand",
+            title: { ar: "تطوير الواجهات التفاعلية الحديثة باستخدام React.js", en: "Modern Frontend Development with React.js" },
+            issuer: { ar: "منصة Coursera / Meta", en: "Coursera / Meta" },
+            date: { ar: "2025", en: "2025" },
+            credentialId: "META-REACT-884",
+            link: "#"
+          },
+          {
+            icon: "fa-database",
+            brand: false,
+            tone: "purple",
+            title: { ar: "تصميم وهندسة قواعد البيانات و RESTful APIs", en: "Database Architecture & RESTful API Design" },
+            issuer: { ar: "معهد تكنولوجيا المعلومات (ITI) / Mahara-Tech", en: "ITI / Mahara-Tech" },
+            date: { ar: "2025", en: "2025" },
+            credentialId: "ITI-DB-2025",
+            link: "#"
+          },
+          {
+            icon: "fa-wordpress",
+            brand: true,
+            tone: "amber",
+            title: { ar: "تطوير قوالب WordPress المتقدمة (Timber & Twig)", en: "Custom WordPress Theme Development (Timber & Twig)" },
+            issuer: { ar: "شهادة تخصصية معتمدة", en: "Specialized Certification" },
+            date: { ar: "2025", en: "2025" },
+            credentialId: "WP-TWIG-402",
+            link: "#"
+          },
+          {
+            icon: "fa-graduation-cap",
+            brand: false,
+            tone: "pink",
+            title: { ar: "بكالوريوس الهندسة المدنية", en: "B.Sc. in Civil Engineering" },
+            issuer: { ar: "كلية الهندسة - مصر", en: "Faculty of Engineering - Egypt" },
+            date: { ar: "2014", en: "2014" },
+            credentialId: "ENG-2014",
+            link: "#"
+          }
+        ];
+
+        const staticTranslations = {
+          "nav-logo-text":"navLogo","nav-role-sub":"navRole","nav-about":"about","nav-skills":"skills","nav-projects":"projects","nav-services":"services","nav-certificates":"certificates","nav-contact":"contact",
+          "m-nav-about":"about","m-nav-skills":"skills","m-nav-projects":"projects","m-nav-services":"services","m-nav-certificates":"certificates","m-nav-contact":"contact",
+          "hero-badge":"badge","hero-greeting":"greeting","hero-name":"name","typing-prefix":"typingPrefix","hero-desc":"desc","badge1-title":"badge1Title","badge1-sub":"badge1Sub","badge2-title":"badge2Title","badge2-sub":"badge2Sub",
+          "about-heading":"aboutHeading","about-sub":"aboutSub","about-title-internal":"aboutTitleInternal","about-p1":"aboutP1","about-p2":"aboutP2","mindset-title":"mindsetTitle","mind1-t":"mind1T","mind1-d":"mind1D","mind2-t":"mind2T","mind2-d":"mind2D","mind3-t":"mind3T","mind3-d":"mind3D",
+          "stat1":"stat1","stat2":"stat2","stat3":"stat3","skills-heading":"skillsHeading","skills-sub":"skillsSub","projects-heading":"projectsHeading","projects-sub":"projectsSub","filter-all":"filterAll","filter-backend":"filterBackend","filter-fullstack":"filterFullstack",
+          "services-title":"servicesTitle","srv1-title":"srv1Title","srv1-desc":"srv1Desc","srv2-title":"srv2Title","srv2-desc":"srv2Desc","srv3-title":"srv3Title","srv3-desc":"srv3Desc","exp-title":"expTitle",
+          "certs-heading":"certsHeading","certs-sub":"certsSub",
+          "contact-heading":"contactHeading","contact-sub":"contactSub","c-email":"email","c-github":"github","c-location":"location","c-city":"city","lbl-name":"lblName","lbl-email":"lblEmail","lbl-subject":"lblSubject","lbl-message":"lblMessage","btn-send":"btnSend"
+        };
+
+        function renderSkills() {
+          const grid = document.getElementById('skills-grid');
+          if (!grid) return;
+          const toneClasses = {indigo:'bg-indigo-500/10 text-indigo-500',brand:'bg-brand-500/10 text-brand-500',purple:'bg-purple-500/10 text-purple-500',amber:'bg-amber-500/10 text-amber-500',pink:'bg-pink-500/10 text-pink-500'};
+          grid.innerHTML = skillGroups.map(group => `
+            <article class="glass-card p-6 rounded-3xl border border-slate-200 dark:border-slate-800 hover:-translate-y-1 transition-all ${group.wide ? 'md:col-span-2 lg:col-span-2' : ''}">
+              <div class="flex items-center gap-3 mb-4">
+                <div class="p-3 rounded-2xl ${toneClasses[group.tone]} text-xl font-bold">
+                  <i class="fa-${group.brand ? 'brands' : 'solid'} ${group.icon}"></i>
+                </div>
+                <h3 class="font-bold text-lg">${group.title[currentLang]}</h3>
+              </div>
+              <div class="flex flex-wrap gap-2">${group.items.map(item => `<span class="px-3 py-1 rounded-lg bg-slate-200 dark:bg-slate-800 text-xs font-semibold">${item}</span>`).join('')}</div>
+            </article>`).join('');
+        }
+
+        function renderProjects() {
+          const grid = document.getElementById('projects-grid');
+          if (!grid) return;
+          grid.innerHTML = projectsData.map(project => `
+            <article class="project-card ${project.category} glass-card rounded-3xl overflow-hidden border border-slate-200 dark:border-slate-800 hover:-translate-y-2 transition-all duration-300 flex flex-col justify-between">
+              <div>
+                <div class="relative overflow-hidden group h-52">
+                  <img src="${project.image}" alt="${project.alt}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                  <div class="absolute inset-0 bg-slate-900/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                    <a href="${project.site_link}" target="_blank" rel="noreferrer" aria-label="Project Website" class="w-12 h-12 rounded-full bg-indigo-600 text-white flex items-center justify-center hover:bg-indigo-500 transition-colors shadow-lg"><i class="fa-solid fa-globe text-xl"></i></a>
+                  </div>
+                </div>
+                <div class="p-6 space-y-3">
+                  <span class="text-xs font-bold text-indigo-500 uppercase tracking-wider">${project.type}</span>
+                  <h3 class="text-xl font-bold">${project.title[currentLang]}</h3>
+                  <p class="text-slate-600 dark:text-slate-400 text-sm line-clamp-3">${project.desc[currentLang]}</p>
+                  <div class="flex flex-wrap gap-2 pt-2">${project.tags.map(tag => `<span class="px-2.5 py-1 rounded-md bg-slate-200 dark:bg-slate-800 text-xs font-semibold">${tag}</span>`).join('')}</div>
+                </div>
+              </div>
+             
+            </article>`).join('');
+          filterProjects(activeProjectFilter);
+        }
+
+        function renderCertificates() {
+          const grid = document.getElementById('certificates-grid');
+          if (!grid) return;
+          const toneClasses = {
+            indigo: 'bg-indigo-500/10 text-indigo-500 border-indigo-500/20',
+            brand: 'bg-brand-500/10 text-brand-500 border-brand-500/20',
+            purple: 'bg-purple-500/10 text-purple-500 border-purple-500/20',
+            amber: 'bg-amber-500/10 text-amber-500 border-amber-500/20',
+            pink: 'bg-pink-500/10 text-pink-500 border-pink-500/20'
+          };
+          const data = translations[currentLang];
+
+          grid.innerHTML = certificatesData.map(cert => `
+            <article class="glass-card p-6 rounded-3xl border border-slate-200 dark:border-slate-800 hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between group">
+              <div>
+                <div class="flex items-start justify-between gap-4 mb-4">
+                  <div class="w-12 h-12 rounded-2xl ${toneClasses[cert.tone]} border flex items-center justify-center text-2xl shrink-0">
+                    <i class="fa-${cert.brand ? 'brands' : 'solid'} ${cert.icon}"></i>
+                  </div>
+                  <span class="px-3 py-1 rounded-full text-xs font-bold bg-slate-200/80 dark:bg-slate-800 text-slate-700 dark:text-slate-300">
+                    <i class="fa-regular fa-calendar me-1 text-indigo-500"></i>${cert.date[currentLang]}
+                  </span>
+                </div>
+
+                <h3 class="text-lg font-bold mb-2 group-hover:text-indigo-500 transition-colors leading-snug">
+                  ${cert.title[currentLang]}
+                </h3>
+
+                <p class="text-sm font-semibold text-slate-600 dark:text-slate-400 flex items-center gap-2 mb-3">
+                  <i class="fa-solid fa-award text-brand-500"></i>
+                  <span>${cert.issuer[currentLang]}</span>
+                </p>
+              </div>
+
+              <div class="pt-4 mt-2 border-t border-slate-200/70 dark:border-slate-800 flex items-center justify-between gap-2">
+                <span class="text-xs text-slate-500 dark:text-slate-400 font-mono">
+                  ${data.credentialId} <strong class="text-slate-700 dark:text-slate-300">${cert.credentialId}</strong>
+                </span>
+                <a href="${cert.link}" target="_blank" rel="noreferrer"
+                   class="inline-flex items-center gap-1.5 text-xs font-bold text-indigo-600 dark:text-indigo-400 hover:text-brand-500 dark:hover:text-brand-400 transition-colors">
+                  <span>${data.viewCert}</span>
+                  <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                </a>
+              </div>
+            </article>
+          `).join('');
+        }
+
+        let activeProjectFilter = 'all';
+        function applyLanguage() {
+          const data = translations[currentLang];
+          document.title = data.pageTitle;
+          document.documentElement.lang = currentLang;
+          document.documentElement.dir = currentLang === 'ar' ? 'rtl' : 'ltr';
+          document.body.dir = currentLang === 'ar' ? 'rtl' : 'ltr';
+          document.getElementById('lang-btn-text').textContent = currentLang === 'ar' ? 'EN' : 'عربي';
+          document.getElementById('lang-toggle-mobile').textContent = currentLang === 'ar' ? 'EN' : 'عربي';
+          Object.entries(staticTranslations).forEach(([id,key]) => {
+            const element = document.getElementById(id);
+            if (element) element.textContent = data[key];
+          });
+          document.getElementById('btn-projects').children[1].textContent = data.btnProjects;
+          document.getElementById('btn-github').children[1].textContent = data.btnGithub;
+          const footer = document.getElementById('footer-copy');
+          footer.innerHTML = `© <span id="year">${new Date().getFullYear()}</span> ${currentLang === 'ar' ? 'باسم المسلماني' : 'Bassem Elmoslmany'} - ${data.footerCopy}`;
+          document.querySelector('input[name="name"]').placeholder = data.phName;
+          document.querySelector('input[name="subject"]').placeholder = data.phSubject;
+          document.querySelector('textarea[name="message"]').placeholder = data.phMessage;
+          ['timeline1','timeline2'].forEach((key) => {
+            const item = document.getElementById(key);
+            if (item) {
+              item.querySelector('[data-t="date"]').textContent = data[key+'Date'];
+              item.querySelector('[data-t="title"]').textContent = data[key+'Title'];
+              item.querySelector('[data-t="sub"]').textContent = data[key+'Sub'];
+              item.querySelector('[data-t="desc"]').textContent = data[key+'Desc'];
+            }
+          });
+          renderSkills();
+          renderProjects();
+          renderCertificates();
+          typingIndex = 0; charIndex = 0; isDeleting = false;
+          document.getElementById('typing-text').textContent = '';
+        }
+
+        function toggleLanguage() {
+          currentLang = currentLang === 'ar' ? 'en' : 'ar';
+          applyLanguage();
+        }
+
+        // Mobile Menu Toggle
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+
+        // Project Filtering
+        function filterProjects(category) {
+            activeProjectFilter = category;
+            const cards = document.querySelectorAll('.project-card');
+            const buttons = document.querySelectorAll('.filter-btn');
+
+            buttons.forEach(btn => {
+                if (btn.getAttribute('data-filter') === category) {
+                    btn.classList.add('bg-indigo-600', 'text-white');
+                    btn.classList.remove('glass');
+                } else {
+                    btn.classList.remove('bg-indigo-600', 'text-white');
+                    btn.classList.add('glass');
+                }
+            });
+
+            cards.forEach(card => {
+                if (category === 'all' || card.classList.contains(category)) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        // Dynamic Typing Animation
+        let typingIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+
+        function initTypingEffect() {
+            const roles = translations[currentLang].typingRoles;
+            const targetElement = document.getElementById('typing-text');
+
+            if (!targetElement) return;
+
+            let currentRole = roles[typingIndex % roles.length];
+
+            if (isDeleting) {
+                targetElement.textContent = currentRole.substring(0, charIndex - 1);
+                charIndex--;
+            } else {
+                targetElement.textContent = currentRole.substring(0, charIndex + 1);
+                charIndex++;
+            }
+
+            let typeSpeed = isDeleting ? 40 : 80;
+
+            if (!isDeleting && charIndex === currentRole.length) {
+                typeSpeed = 2000;
+                isDeleting = true;
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                typingIndex++;
+                typeSpeed = 500;
+            }
+
+            setTimeout(initTypingEffect, typeSpeed);
+        }
+
+        // Copy GitHub Link
+        function copyGitHubLink() {
+            const tempInput = document.createElement('input');
+            tempInput.value = 'https://github.com/bassem1sttest';
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            document.execCommand('copy');
+            document.body.removeChild(tempInput);
+            alert(translations[currentLang].copyAlert);
+        }
+
+        // Form Submit Simulation
+        async function handleFormSubmit(event) {
+            event.preventDefault();
+            const form = event.target;
+            const btn = form.querySelector('button[type="submit"]');
+            const originalText = btn.innerHTML;
+
+            btn.innerHTML = `<i class="fa-solid fa-spinner animate-spin"></i> <span>${translations[currentLang].sending}</span>`;
+
+            const formData = new FormData(form);
+
+            try {
+                const response = await fetch(form.action, {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+
+                if (response.ok) {
+                    alert(translations[currentLang].success);
+                    form.reset();
+                } else {
+                    alert(translations[currentLang].error);
+                }
+            } catch (error) {
+                alert(translations[currentLang].networkError);
+            } finally {
+                btn.innerHTML = originalText;
+            }
+        }
+
+        // Scroll to Top
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Initialize Typing Animation on Window Load
+        window.onload = function () {
+            applyLanguage();
+            initTypingEffect();
+        };
+    </script>
+</body>
+
+</html>

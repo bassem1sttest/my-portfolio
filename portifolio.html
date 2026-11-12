@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" class="scroll-smooth">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>باسم المسلماني - Full-Stack & Backend Developer</title>
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Alpine.js يجب أن يتم تحميله قبل أي سكربات تفاعلية -->
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+
+<body x-data="portfolioData()" :dir="lang === 'ar' ? 'rtl' : 'ltr'" :class="lang === 'ar' ? 'rtl' : 'ltr'"
+  class="bg-slate-950 text-slate-100 font-sans selection:bg-indigo-500 selection:text-white">
+
+  <!-- Navigation Header -->
+  <nav
+    class="fixed top-0 left-0 right-0 z-40 bg-slate-900/90 backdrop-blur-md border-b border-slate-800/80 transition-all">
+    <div class="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <div
+          class="bg-gradient-to-tr from-indigo-600 to-violet-500 p-2 rounded-xl text-white font-black tracking-wider shadow-lg shadow-indigo-500/20">
+          BE</div>
+        <div>
+          <span class="font-bold text-slate-100 block text-base leading-none" x-text="t[lang].name"></span>
+          <span class="text-xs text-indigo-400 font-medium" x-text="t[lang].role"></span>
+        </div>
+      </div>
+
+      <button @click="toggleLang()"
+        class="bg-slate-800/90 hover:bg-slate-700 px-3.5 py-1.5 rounded-full text-xs font-semibold border border-slate-700/80 flex items-center gap-2 transition shadow-sm hover:border-indigo-500/50 cursor-pointer">
+        <i data-lucide="globe" class="w-3.5 h-3.5 text-indigo-400"></i>
+        <span x-text="lang === 'ar' ? 'English' : 'عربي'"></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="pt-32 pb-20 px-4 max-w-6xl mx-auto">
+    <div
+      class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-indigo-950/70 border border-indigo-800/60 text-indigo-300 text-xs sm:text-sm font-medium mb-6 shadow-sm">
+      <i data-lucide="building-2" class="w-4 h-4 text-indigo-400"></i>
+      <span x-text="t[lang].badge"></span>
+    </div>
+
+    <h1 class="text-4xl sm:text-6xl font-black text-white mb-6 leading-tight tracking-tight max-w-4xl"
+      x-text="t[lang].heroTitle"></h1>
+
+    <p class="text-slate-400 text-base sm:text-lg max-w-3xl mb-10 leading-relaxed font-normal"
+      x-text="t[lang].heroDesc"></p>
+
+    <div class="flex flex-wrap gap-4">
+      <a href="#contact"
+        class="bg-indigo-600 hover:bg-indigo-500 text-white px-7 py-3.5 rounded-xl font-semibold transition shadow-lg shadow-indigo-600/30 flex items-center gap-2 transform hover:-translate-y-0.5">
+        <i data-lucide="mail" class="w-4 h-4"></i>
+        <span x-text="t[lang].contactBtn"></span>
+      </a>
+      <a href="https://github.com/bassem1sttest" target="_blank" rel="noreferrer"
+        class="bg-slate-900 hover:bg-slate-800 border border-slate-700 text-slate-200 px-7 py-3.5 rounded-xl font-semibold transition flex items-center gap-2 hover:border-slate-600 transform hover:-translate-y-0.5">
+        <i data-lucide="code" class="w-4 h-4 text-indigo-400"></i>
+        <span x-text="t[lang].githubBtn"></span>
+      </a>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section class="py-16 bg-slate-900/40 border-y border-slate-800/60 px-4">
+    <div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+      <div class="lg:col-span-7 space-y-4">
+        <h2 class="text-2xl sm:text-3xl font-bold text-white" x-text="t[lang].aboutTitle"></h2>
+        <p class="text-indigo-400 font-medium text-sm sm:text-base" x-text="t[lang].aboutSub"></p>
+        <p class="text-slate-300 leading-relaxed text-sm sm:text-base" x-text="t[lang].aboutP1"></p>
+        <p class="text-slate-300 leading-relaxed text-sm sm:text-base" x-text="t[lang].aboutP2"></p>
+      </div>
+
+      <div class="lg:col-span-5 bg-slate-900/90 p-6 sm:p-8 rounded-2xl border border-slate-800/80 shadow-xl space-y-4">
+        <h3 class="text-base font-bold text-slate-100 flex items-center gap-2 border-b border-slate-800 pb-3">
+          <i data-lucide="terminal" class="w-5 h-5 text-indigo-400"></i>
+          <span x-text="t[lang].mindsetTitle"></span>
+        </h3>
+        <ul class="space-y-4 text-slate-300 text-xs sm:text-sm">
+          <li class="flex items-start gap-3">
+            <i data-lucide="check-circle-2" class="w-5 h-5 text-indigo-400 shrink-0 mt-0.5"></i>
+            <span x-text="t[lang].mindset1"></span>
+          </li>
+          <li class="flex items-start gap-3">
+            <i data-lucide="check-circle-2" class="w-5 h-5 text-indigo-400 shrink-0 mt-0.5"></i>
+            <span x-text="t[lang].mindset2"></span>
+          </li>
+          <li class="flex items-start gap-3">
+            <i data-lucide="check-circle-2" class="w-5 h-5 text-indigo-400 shrink-0 mt-0.5"></i>
+            <span x-text="t[lang].mindset3"></span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills Section -->
+  <section class="py-20 px-4 max-w-6xl mx-auto">
+    <div class="text-center mb-12">
+      <h2 class="text-3xl font-bold text-white mb-2" x-text="t[lang].skillsTitle"></h2>
+      <div class="w-12 h-1 bg-indigo-600 mx-auto rounded-full"></div>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <template x-for="(s, i) in skills" :key="i">
+        <div
+          class="bg-slate-900/70 p-6 rounded-2xl border border-slate-800/80 hover:border-indigo-500/40 transition-all duration-300 group hover:-translate-y-1 hover:shadow-xl hover:shadow-indigo-500/5">
+          <div class="flex items-center gap-3 mb-4">
+            <div
+              class="p-2.5 rounded-xl bg-slate-800 text-indigo-400 group-hover:bg-indigo-600 group-hover:text-white transition">
+              <i :data-lucide="s.icon" class="w-5 h-5"></i>
+            </div>
+            <h3 class="font-bold text-slate-200 text-base" x-text="s.name"></h3>
+          </div>
+          <div class="flex flex-wrap gap-2">
+            <template x-for="(item, j) in s.items" :key="j">
+              <span
+                class="text-xs font-medium bg-slate-800/80 text-slate-300 px-3 py-1 rounded-lg border border-slate-700/50"
+                x-text="item"></span>
+            </template>
+          </div>
+        </div>
+      </template>
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+  <section class="py-20 bg-slate-900/20 border-t border-slate-800/80 px-4">
+    <div class="max-w-6xl mx-auto">
+      <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-10">
+        <div>
+          <h2 class="text-3xl font-bold text-white mb-1" x-text="t[lang].projectsTitle"></h2>
+          <div class="w-12 h-1 bg-indigo-600 rounded-full"></div>
+        </div>
+
+        <div class="flex bg-slate-900 p-1 rounded-xl border border-slate-800 text-xs font-semibold">
+          <button @click="activeTab = 'all'"
+            :class="activeTab === 'all' ? 'bg-indigo-600 text-white shadow' : 'text-slate-400 hover:text-white'"
+            class="px-4 py-2 rounded-lg transition cursor-pointer" x-text="t[lang].all"></button>
+          <button @click="activeTab = 'backend'"
+            :class="activeTab === 'backend' ? 'bg-indigo-600 text-white shadow' : 'text-slate-400 hover:text-white'"
+            class="px-4 py-2 rounded-lg transition cursor-pointer" x-text="t[lang].backend"></button>
+          <button @click="activeTab = 'fullstack'"
+            :class="activeTab === 'fullstack' ? 'bg-indigo-600 text-white shadow' : 'text-slate-400 hover:text-white'"
+            class="px-4 py-2 rounded-lg transition cursor-pointer" x-text="t[lang].fullstack"></button>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <template x-for="project in filteredProjects()" :key="project.id">
+          <div
+            class="bg-slate-900/80 border border-slate-800/80 rounded-2xl overflow-hidden hover:border-slate-700 transition-all duration-300 group flex flex-col justify-between hover:-translate-y-1 hover:shadow-xl">
+
+            <!-- Project Image -->
+            <div class="h-48 overflow-hidden bg-slate-800 relative">
+              <img :src="project.image" :alt="project.title[lang]"
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent opacity-60">
+              </div>
+            </div>
+
+            <div class="p-6 flex flex-col flex-grow justify-between">
+              <div>
+                <h3 class="text-xl font-bold text-white mb-3 group-hover:text-indigo-400 transition"
+                  x-text="project.title[lang]"></h3>
+                <p class="text-slate-400 text-sm leading-relaxed mb-6" x-text="project.desc[lang]"></p>
+
+                <div class="flex flex-wrap gap-2 mb-6">
+                  <template x-for="(techItem, i) in project.tech" :key="i">
+                    <span
+                      class="text-xs bg-indigo-950/60 text-indigo-300 font-medium px-2.5 py-1 rounded-md border border-indigo-800/40"
+                      x-text="techItem"></span>
+                  </template>
+                </div>
+              </div>
+
+              <button @click="openModal(project)"
+                class="text-xs font-bold text-indigo-400 hover:text-indigo-300 flex items-center gap-1.5 pt-4 border-t border-slate-800/80 transition cursor-pointer">
+                <span x-text="t[lang].viewProject"></span>
+                <i data-lucide="chevron-right" class="w-4 h-4"></i>
+              </button>
+            </div>
+          </div>
+        </template>
+      </div>
+    </div>
+  </section>
+
+  <!-- Project Detail Modal -->
+  <div x-show="selectedProject !== null" x-transition.opacity
+    class="fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-sm flex items-center justify-center p-4"
+    style="display: none;">
+    <div
+      class="bg-slate-900 border border-slate-800 rounded-2xl max-w-2xl w-full p-6 sm:p-8 shadow-2xl relative space-y-6 transform transition-all duration-300 scale-100"
+      @click.away="closeModal()">
+      <button @click="closeModal()"
+        class="absolute top-4 left-4 sm:top-6 sm:left-6 text-slate-400 hover:text-white p-2 bg-slate-800 rounded-full cursor-pointer transition">
+        <i data-lucide="x" class="w-5 h-5"></i>
+      </button>
+
+      <div>
+        <span class="text-xs font-bold uppercase tracking-wider text-indigo-400"
+          x-text="selectedProject?.category"></span>
+        <h3 class="text-2xl font-bold text-white mt-1" x-text="selectedProject?.title[lang]"></h3>
+      </div>
+
+      <p class="text-slate-300 text-sm leading-relaxed" x-text="selectedProject?.desc[lang]"></p>
+
+      <div>
+        <h4 class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2" x-text="t[lang].techUsed"></h4>
+        <div class="flex flex-wrap gap-2">
+          <template x-for="(techItem, i) in selectedProject?.tech" :key="i">
+            <span class="text-xs bg-indigo-950 text-indigo-300 px-3 py-1 rounded-lg border border-indigo-800"
+              x-text="techItem"></span>
+          </template>
+        </div>
+      </div>
+
+      <div>
+        <h4 class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-3" x-text="t[lang].highlights"></h4>
+        <ul class="space-y-2">
+          <template x-for="(h, i) in (selectedProject?.highlights[lang] || [])" :key="i">
+            <li class="text-slate-300 text-sm flex items-start gap-2">
+              <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-400 shrink-0 mt-0.5"></i>
+              <span x-text="h"></span>
+            </li>
+          </template>
+        </ul>
+      </div>
+
+      <div class="pt-4 border-t border-slate-800 flex justify-end gap-3">
+        <a :href="selectedProject?.github" target="_blank" rel="noreferrer"
+          class="bg-indigo-600 hover:bg-indigo-500 text-white px-5 py-2.5 rounded-xl font-semibold text-sm flex items-center gap-2 transition shadow-lg shadow-indigo-600/30">
+          <i data-lucide="code" class="w-4 h-4"></i>
+          <span>GitHub Repository</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Contact Section -->
+  <section id="contact" class="py-20 px-4 max-w-4xl mx-auto text-center border-t border-slate-800/80">
+    <h2 class="text-3xl font-bold text-white mb-3" x-text="t[lang].contactTitle"></h2>
+    <p class="text-slate-400 text-sm sm:text-base mb-10 max-w-md mx-auto" x-text="t[lang].contactSub"></p>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+      <div
+        class="bg-slate-900/90 border border-slate-800/80 p-5 rounded-2xl flex items-center justify-center gap-3 hover:border-slate-700 transition">
+        <i data-lucide="mail" class="w-5 h-5 text-indigo-400"></i>
+        <span class="text-sm font-medium text-slate-200">bassem@example.com</span>
+      </div>
+
+      <div @click="copyNumber()"
+        class="bg-slate-900/90 border border-slate-800/80 p-5 rounded-2xl flex items-center justify-center gap-3 cursor-pointer hover:border-indigo-500/50 transition group">
+        <i data-lucide="phone" class="w-5 h-5 text-indigo-400"></i>
+        <span class="text-sm font-medium text-slate-200" x-text="copied ? t[lang].copiedText : t[lang].copyText"></span>
+        <i x-show="!copied" data-lucide="copy" class="w-4 h-4 text-slate-500 group-hover:text-indigo-400"></i>
+        <i x-show="copied" data-lucide="check" class="w-4 h-4 text-emerald-400" style="display: none;"></i>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="py-8 text-center border-t border-slate-900 text-slate-500 text-xs">
+    <p>© 2026 <span x-text="t[lang].name"></span>. All rights reserved.</p>
+  </footer>
+
+  <!-- Alpine.js Data Setup & Lucide Initialization -->
+  <script>
+    function portfolioData() {
+      return {
+        lang: 'ar',
+        activeTab: 'all',
+        selectedProject: null,
+        copied: false,
+        t: {
+          ar: {
+            name: 'باسم المسلماني',
+            role: 'Full-Stack & Backend Developer',
+            badge: 'مهندس مدني سابقاً 🏗️ ← مطور ويب 💻',
+            heroTitle: 'أبني حلول ويب قوية، مرنة، ومصممة بأعلى معايير الجودة.',
+            heroDesc: 'خريج هندسة مدنية (2014) انتقلت بشغف إلى عالم البرمجة وتطوير المواقع (يونيو 2025). أجمع بين التفكير الهندسي التخطيطي ودقة بناء الأنظمة البرمجية باستخدام Laravel و React و WordPress.',
+            contactBtn: 'تواصل معي',
+            githubBtn: 'حساب GitHub',
+            aboutTitle: 'عني والتحول الوظيفي',
+            aboutSub: 'من التخطيط الإنشائي إلى بناء المعمارية البرمجية',
+            aboutP1: 'تخرجت من كلية الهندسة المدنية عام 2014 واكتسبت سنوات من الخبرة في إدارة المشاريع والتفكير الهيكلي. في يونيو 2025، اتخذت خطوة استراتيجية نحو شغفي الحقيقي في البرمجة وتطوير الويب.',
+            aboutP2: 'أنظر إلى كتابة الكود بنفس المنظور الهندسي: تصميم بنية تحتية قوية (Backend Architecture)، توفير أمان عالٍ، وبناء واجهات سلسة ومتجاوبة تخدم احتياجات العمل بكفاءة.',
+            skillsTitle: 'المهارات التقنية والخبرات',
+            projectsTitle: 'المشاريع البارزة',
+            contactTitle: 'لنعمل معاً',
+            contactSub: 'هل لديك مشروع، استشارة، أو فرصة عمل مناسبة؟ يسعدني التواصل بك.',
+            all: 'الكل',
+            backend: 'Backend & APIs',
+            fullstack: 'Full-Stack & CMS',
+            close: 'إغلاق',
+            viewProject: 'تفاصيل المشروع',
+            techUsed: 'التقنيات المستخدمة:',
+            highlights: 'أبرز الإنجازات البرمجية والحلول:',
+            copiedText: 'تم نسخ الرقم!',
+            copyText: 'نسخ رقم الهاتف',
+            mindsetTitle: 'المنظور الهندسي في كتابة الكود',
+            mindset1: 'التحليل الإنشائي ← معمارية قواعد البيانات والـ APIs',
+            mindset2: 'معايير السلامة ← أمان الكود والاختبارات الأوتوماتيكية',
+            mindset3: 'تنفيذ المشاريع ← كود نظيف وحلول قابلة للتوسع'
+          },
+          en: {
+            name: 'Bassem Elmoslmany',
+            role: 'Full-Stack & Backend Developer',
+            badge: 'Ex-Civil Engineer 🏗️ → Web Developer 💻',
+            heroTitle: 'Building robust, scalable, and high-performance web applications.',
+            heroDesc: 'Civil Engineering graduate (2014) transitioned into full-stack web development (June 2025). Combining structural analytical thinking with modern software craftsmanship using Laravel, React, and WordPress.',
+            contactBtn: 'Contact Me',
+            githubBtn: 'GitHub Profile',
+            aboutTitle: 'About & Career Transition',
+            aboutSub: 'From Structural Engineering to Software Architecture',
+            aboutP1: 'Graduated with a degree in Civil Engineering in 2014, honing strong analytical and project management skills. In June 2025, I made a committed career transition into full-stack web development.',
+            aboutP2: 'I approach software engineering with a structural mindset: designing sturdy backend infrastructures, ensuring tight security, and delivering responsive user interfaces.',
+            skillsTitle: 'Technical Skills & Capabilities',
+            projectsTitle: 'Featured Projects',
+            contactTitle: "Let's Connect",
+            contactSub: 'Looking for a dedicated developer for your team or project?',
+            all: 'All',
+            backend: 'Backend & APIs',
+            fullstack: 'Full-Stack & CMS',
+            close: 'Close',
+            viewProject: 'View Project Details',
+            techUsed: 'Technologies Used:',
+            highlights: 'Key Technical Highlights:',
+            copiedText: 'Copied to clipboard!',
+            copyText: 'Copy Phone Number',
+            mindsetTitle: 'Engineering Mindset in Code',
+            mindset1: 'Structural Analysis → Database Schema & API Architecture',
+            mindset2: 'Building Safety Standards → Code Security & Automated Testing',
+            mindset3: 'Project Execution → Clean Code & Scalable Solutions'
+          }
+        },
+        skills: [
+          { name: 'Backend Architecture', icon: 'server', items: ['PHP 8+', 'Laravel Framework', 'RESTful APIs', 'Sanctum Authentication', 'MVC Pattern'] },
+          { name: 'Database & Storage', icon: 'database', items: ['MySQL', 'Database Schema Design', 'Eloquent ORM', 'Migrations & Seeding'] },
+          { name: 'Frontend Development', icon: 'layout', items: ['JavaScript (ES6+)', 'React.js', 'Tailwind CSS', 'HTML5 / CSS3', 'Vite'] },
+          { name: 'CMS & Custom Solutions', icon: 'layers', items: ['WordPress Development', 'Timber Library', 'Twig Templates', 'ACF Pro', 'Custom Post Types'] },
+          { name: 'Tools & Workflows', icon: 'terminal', items: ['Git & GitHub', 'Postman API Testing', 'Git Bash / Terminal', 'OBS & Media Tools'] }
+        ],
+        projects: [
+          {
+            id: 1,
+            category: 'backend',
+            image: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&auto=format&fit=crop',
+            title: { ar: 'نظام إدارة الحضور والشيفتات (Laravel)', en: 'Laravel Attendance System' },
+            desc: { ar: 'نظام خلفي متكامل ومؤمن لإدارة جدول عمل الموظفين وتسجيل الانصراف والحضور أوتوماتيكياً.', en: 'Automated backend engine for employee shift tracking, attendance logs, and hours calculation.' },
+            tech: ['Laravel', 'PHP', 'RESTful APIs', 'MySQL', 'Sanctum'],
+            github: 'https://github.com/bassem1sttest/laravel-attendance-system',
+            highlights: {
+              ar: ['بناء نقاط اتصال RESTful APIs مؤمنة بالكامل.', 'كتابة اختبارات أوتوماتيكية لضمان صحة المعاملات وساعات العمل.'],
+              en: ['Designed fully authenticated REST APIs.', 'Wrote automated feature tests for accurate calculations.']
+            }
+          },
+          {
+            id: 2,
+            category: 'fullstack',
+            image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&auto=format&fit=crop',
+            title: { ar: 'تصميم وتحديث منصة دكان (Dokan Design Updated)', en: 'Dokan Design Updated' },
+            desc: { ar: 'تطوير وتحديث واجهات وتصميم منصة دكان الإلكترونية لتقديم تجربة تسوق سلسة وعصرية.', en: 'Updated UI/UX design and frontend structure for the Dokan e-commerce platform.' },
+            tech: ['HTML/CSS', 'JavaScript', 'Tailwind CSS', 'UI/UX'],
+            github: 'https://github.com/bassem1sttest/dokan-design-updated',
+            highlights: {
+              ar: ['تحسين واجهات المستخدم وتجربة التصفح بشكل متكامل.', 'تنظيم وتنسيق العناصر البرمجية بأعلى كفاءة.'],
+              en: ['Enhanced user interface and overall browsing experience.', 'Clean and structured frontend implementation.']
+            }
+          },
+          {
+            id: 3,
+            category: 'fullstack',
+            image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&auto=format&fit=crop',
+            title: { ar: 'منصة AdVaultAI (16 Clusters)', en: 'AdvaultAI 16clusters' },
+            desc: { ar: 'تطوير وتحديث واجهة مستخدم متجاوبة ومنظمة لمنصة إعلانية تعتمد على الذكاء الاصطناعي وتوزيع العناقيد.', en: 'Advanced frontend and clustering structure created for an AI-driven advertising platform.' },
+            tech: ['React', 'Tailwind CSS', 'JavaScript', 'REST APIs'],
+            github: 'https://github.com/bassem1sttest/AdvaultAI-16clusters',
+            highlights: {
+              ar: ['تصميم واجهات مستخدم حديثة ومتجاوبة بأعلى أداء.', 'ربط المكونات البرمجية وإدارة البيانات بفعالية.'],
+              en: ['Implemented a modern and responsive user interface.', 'Integrated dynamic data structures and frontend components.']
+            }
+          },
+          {
+            id: 4,
+            category: 'fullstack',
+            image: 'https://images.unsplash.com/photo-1513694203232-719a280e022f?w=800&auto=format&fit=crop',
+            title: { ar: 'خدمات العناية بالعقارات الخارجية', en: 'Exterior Property Care' },
+            desc: { ar: 'منصة ويب متكاملة مخصصة لعرض وتقديم خدمات الصيانة والعناية بالعقارات والمنشآت من الخارج.', en: 'Comprehensive web platform designed for exterior property maintenance and care services.' },
+            tech: ['HTML/CSS', 'JavaScript', 'Tailwind CSS', 'Responsive Design'],
+            github: 'https://github.com/bassem1sttest/Exterior-property-care',
+            highlights: {
+              ar: ['تصميم واجهة مستخدم جذابة وسهلة التصفح للعملاء.', 'توافق تام مع مختلف الأجهزة والشاشات.'],
+              en: ['Created an engaging, user-friendly customer interface.', 'Fully responsive layout across all device screens.']
+            }
+          },
+          {
+            id: 5,
+            category: 'fullstack',
+            image: 'https://images.unsplash.com/photo-1517581177682-a085bb7ffb15?w=800&auto=format&fit=crop',
+            title: { ar: 'عروض خدمات أبواب الجراجات', en: 'Garage Door ASAP Service Demos' },
+            desc: { ar: 'تطوير صفحة عروض وتفاعلات سريعة لخدمات طوارئ وصيانة أبواب الجراجات باحترافية عالية.', en: 'Fast service demo platform tailored for emergency garage door repair and maintenance services.' },
+            tech: ['JavaScript', 'Tailwind CSS', 'UI/UX', 'Frontend'],
+            github: 'https://github.com/bassem1sttest/garage-door-asap-service-demos',
+            highlights: {
+              ar: ['سرعة استجابة عالية وتصميم يركز على خدمة العملاء الفورية.', 'تنظيم محتوى الخدمات بشكل سلس وواضح.'],
+              en: ['High performance and conversion-focused design.', 'Clean and accessible service layout presentation.']
+            }
+          }
+        ],
+        filteredProjects() {
+          if (this.activeTab === 'all') return this.projects;
+          return this.projects.filter(p => p.category === this.activeTab);
+        },
+        toggleLang() {
+          this.lang = this.lang === 'ar' ? 'en' : 'ar';
+          this.$nextTick(() => { lucide.createIcons(); });
+        },
+        openModal(project) {
+          this.selectedProject = project;
+          this.$nextTick(() => { lucide.createIcons(); });
+        },
+        closeModal() {
+          this.selectedProject = null;
+        },
+        copyNumber() {
+          navigator.clipboard.writeText('+201000000000');
+          this.copied = true;
+          setTimeout(() => { this.copied = false; }, 2500);
+        }
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      lucide.createIcons();
+    });
+  </script>
+</body>
+
+</html>
